@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\BarangController;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\TvController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/', [DashboardController::class, 'index']);
+Route::resource('/', MovieController::class);
 
-//route barang
-Route::resource('/barang', BarangController::class);
+//route movie
+Route::resource('/movie', MovieController::class);
+
+//route tv
+Route::resource('/movie', TvController::class);
