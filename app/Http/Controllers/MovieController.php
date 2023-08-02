@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class MovieController extends Controller
 {
@@ -11,7 +12,40 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return view('movie.movie');
+        $baseurl = env('MOVIE_DB_BASE_URL');
+        $baseimageurl = env('MOVIE_DB_IMAGE_BASE_URL');
+        $api_key = env('MOVIE_DB_API_KEY');
+        $maxbanner = 5;
+
+        //hit api
+        $banner = Http::get("{$baseurl}/movie/popular", [
+            'api_key' => $api_key
+        ]);
+
+        // prepare variable
+        $bannerArray = [];
+
+        //check api response
+        if ($banner->successful()) {
+            //cek data is null or not
+            $resultArray =  $banner->object()->results;
+            //save response data to variable data
+            if (isset($resultArray)) {
+                foreach ($resultArray as $data) {
+                    array_push($bannerArray, $data);
+                    if (count($bannerArray) == $maxbanner) {
+                        break;
+                    }
+                }
+            }
+        }
+
+        return view('movie.movie', [
+            'baseurl' => $baseurl,
+            'baseimageurl' => $baseimageurl,
+            'api_key' => $api_key,
+            'banner' => $bannerArray
+        ]);
     }
 
     /**
