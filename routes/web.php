@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TvController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/', MovieController::class);
+Route::resource('/', HomeController::class);
 
 //route movie
 Route::resource('/movie', MovieController::class);
 
 //route tv
-Route::resource('/movie', TvController::class);
+Route::resource('/tv', TvController::class);

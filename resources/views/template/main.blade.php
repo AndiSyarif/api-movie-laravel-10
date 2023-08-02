@@ -32,7 +32,10 @@
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="/" class="nav-link">Movie</a>
+                    <a href="/" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/movie" class="nav-link">Movie</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="/tv" class="nav-link">TV Show</a>
@@ -115,6 +118,14 @@
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
                             <a href="/" class="nav-link">
+                                <i class="nav-icon fa-solid fa-house"></i>
+                                <p>
+                                    Home
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/movie" class="nav-link">
                                 <i class="nav-icon fa-solid fa-film"></i>
                                 <p>
                                     Movie
