@@ -27,7 +27,7 @@
                                         <div class="carousel-caption d-none d-md-block">
                                             <h5>{{ $data->title }}</h5>
                                             <p>{{ $data->overview }}</p>
-                                            <a href="{{ $data->id }}" class="btn btn-info btn-sm rounded"><i
+                                            <a href="/movie/{{ $data->id }}" class="btn btn-info btn-sm rounded"><i
                                                     class="fa-solid fa-play"></i> Detail</a>
                                         </div>
                                     </div>
