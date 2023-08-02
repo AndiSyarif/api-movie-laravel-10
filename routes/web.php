@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('/', HomeController::class);
 
 //route movie
-Route::resource('/movie', MovieController::class);
+Route::resource('/movies', MovieController::class);
 
 //route tv
-Route::resource('/tv', TvController::class);
+Route::resource('/tv-shows', TvController::class);

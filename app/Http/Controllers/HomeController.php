@@ -88,7 +88,7 @@ class HomeController extends Controller
             }
         }
 
-        // dd($topmovieArray);
+        // dd($toptvArray);
 
         return view('home.home', [
             'baseurl' => $baseurl,

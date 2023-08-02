@@ -35,10 +35,10 @@
                     <a href="/" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="/movie" class="nav-link">Movie</a>
+                    <a href="/movies" class="nav-link">Movies</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="/tv" class="nav-link">TV Show</a>
+                    <a href="/tv-shows" class="nav-link">TV Shows</a>
                 </li>
             </ul>
 
@@ -125,15 +125,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/movie" class="nav-link">
+                            <a href="/movies" class="nav-link">
                                 <i class="nav-icon fa-solid fa-film"></i>
                                 <p>
-                                    Movie
+                                    Movies
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/tv" class="nav-link">
+                            <a href="/tv-shows" class="nav-link">
                                 <i class="nav-icon fa-solid fa-tv"></i>
                                 <p>
                                     TV Show
@@ -146,6 +146,8 @@
             </div>
             <!-- /.sidebar -->
         </aside>
+        <!-- jQuery -->
+        <script src="/assets/plugins/jquery/jquery.min.js"></script>
 
         @yield('content')
 
@@ -178,8 +180,6 @@
 
     <!-- REQUIRED SCRIPTS -->
 
-    <!-- jQuery -->
-    <script src="/assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->

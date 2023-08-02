@@ -12,6 +12,48 @@ class MovieController extends Controller
      */
     public function index()
     {
+        $baseurl = env('MOVIE_DB_BASE_URL');
+        $baseimageurl = env('MOVIE_DB_IMAGE_BASE_URL');
+        $api_key = env('MOVIE_DB_API_KEY');
+        $sortBy = "popularity.desc";
+        $page = 1;
+        $minimalVoter = 100;
+
+
+        //hit top 12 movie
+        $movie = Http::get("{$baseurl}/discover/movie", [
+            'api_key' => $api_key,
+            'sort_by' => $sortBy,
+            'vote_count.gte' => $minimalVoter,
+            'page' => $page
+
+        ]);
+
+        // prepare movies array
+        $movieArray = [];
+
+        //check api response top 12 movie
+        if ($movie->successful()) {
+            //cek data is null or not
+            $resultmovieArray =  $movie->object()->results;
+            //save response data to variable data
+            if (isset($resultmovieArray)) {
+                foreach ($resultmovieArray as $data) {
+                    array_push($movieArray, $data);
+                }
+            }
+        }
+
+        return view('movies.movies', [
+            'baseurl' => $baseurl,
+            'baseimageurl' => $baseimageurl,
+            'api_key' => $api_key,
+            'movie' => $movieArray,
+            'sort_by' => $sortBy,
+            'page' => $page,
+            'minimalVoter' => $minimalVoter
+
+        ]);
     }
 
     /**
