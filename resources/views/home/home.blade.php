@@ -24,7 +24,8 @@
                                         <img class="d-block w-100 object-fit-cover rounded"
                                             src="{{ $baseimageurl }}/original{{ $data->backdrop_path }}"
                                             alt="image {{ $data->original_title }}">
-                                        <div class="carousel-caption d-none d-md-block z-index-1">
+                                        <div class="carousel-caption d-none d-md-block"
+                                            style="z-index: 1;color: #fff;position: absolute;">
                                             <h5><b>{{ $data->title }}</b></h5>
                                             <p>{{ $data->overview }}</p>
                                             <a href="/movie/{{ $data->id }}" class="btn btn-info btn-sm rounded"><i
@@ -60,12 +61,11 @@
                         <div class="card-body">
                             <div class="row">
                                 @foreach ($top12movie as $data)
-                                    <div class="col-md-2.5 mx-auto"> <!-- Use col-md-2.4 to fit 5 items in one row -->
+                                    <div class="col-md-2.5 mx-auto">
                                         <div class="card mb-4">
                                             <img class="card-img-top rounded"
                                                 style="width:250px;height:300px;object-fit: cover;"
-                                                src="{{ $baseimageurl }}/original{{ $data->poster_path }}"
-                                                alt="Card image cap">
+                                                src="{{ $baseimageurl }}/w500{{ $data->poster_path }}" alt="Card image cap">
                                             <div class="card-body">
                                                 <h6 class="card-title"><b>{{ Str::limit($data->title, 21) }}</b></h6><br>
                                                 <span>{{ date('Y', strtotime($data->release_date)) }}</span>
@@ -91,14 +91,14 @@
                         <div class="card-body">
                             <div class="row">
                                 @foreach ($top12tv as $data)
-                                    <div class="col-md-2.5 mx-auto"> <!-- Use col-md-2.4 to fit 5 items in one row -->
+                                    <div class="col-md-2.5 mx-auto">
                                         <div class="card mb-4">
                                             <img class="card-img-top rounded"
                                                 style="width:250px;height:300px;object-fit: cover;"
-                                                src="{{ $baseimageurl }}/original{{ $data->poster_path }}"
+                                                src="{{ $baseimageurl }}/w500{{ $data->poster_path }}"
                                                 alt="Card image cap">
                                             <div class="card-body">
-                                                <h6 class="card-title"><b>{{ Str::limit($data->original_name, 21) }}</b>
+                                                <h6 class="card-title"><b>{{ Str::limit($data->name, 21) }}</b>
                                                 </h6><br>
                                                 <span>{{ date('Y', strtotime($data->first_air_date)) }}</span>
                                                 <h6 class="card-text"><i class="fa-solid fa-thumbs-up"

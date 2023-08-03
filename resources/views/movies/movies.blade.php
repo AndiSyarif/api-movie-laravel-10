@@ -25,11 +25,11 @@
                     <div class="card-body">
                         <div class="row" id="dataWrapper">
                             @foreach ($movie as $data)
-                                <div class="col-md-2.5 mx-auto"> <!-- Use col-md-2.4 to fit 5 items in one row -->
+                                <div class="col-md-2.5 mx-auto">
                                     <div class="card mb-4">
                                         <img class="card-img-top rounded"
                                             style="width:250px;height:300px;object-fit: cover;"
-                                            src="{{ $baseimageurl }}/original{{ $data->poster_path }}" alt="Card image cap">
+                                            src="{{ $baseimageurl }}/w500{{ $data->poster_path }}" alt="Card image cap">
                                         <div class="card-body">
                                             <h6 class="card-title"><b>{{ Str::limit($data->title, 25) }}</b></h6><br>
                                             <span>{{ date('Y', strtotime($data->release_date)) }}</span>
@@ -53,7 +53,8 @@
                     </div>
                 </div>
                 <div class="row justify-content-center mt-2 pb-3">
-                    <button class="btn btn-info btn-block w-50 rounded text-uppercase" onclick="LoadMore()">Load
+                    <button class="btn btn-info btn-block w-50 rounded text-uppercase" onclick="LoadMore()"><i
+                            class="fa-solid fa-spinner"></i> Load
                         More</button>
                 </div>
             </div>
@@ -98,11 +99,11 @@
                                 .title;
                             //let movieImage = `${baseImageurl}/original${item.poster_path}`;
                             let movieYear = new Date(item.release_date).getFullYear();
-                            htmlData.push(`<div class="col-md-2.5 mx-auto"> <!-- Use col-md-2.4 to fit 5 items in one row -->
+                            htmlData.push(`<div class="col-md-2.5 mx-auto">
                                                 <div class="card mb-4">
                                                     <img class="card-img-top rounded"
                                                         style="width:250px;height:300px;object-fit: cover;"
-                                                        src="${baseImageurl}/original${item.poster_path}" alt="Card image cap">
+                                                        src="${baseImageurl}/w500${item.poster_path}" alt="Card image cap">
                                                     <div class="card-body">
                                                         <h6 class="card-title"><b>${movieTitle}</b></h6><br>
                                                         <span>${ movieYear }</span>
