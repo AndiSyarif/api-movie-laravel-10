@@ -38,7 +38,7 @@
                                             <span>{{ date('Y', strtotime($data->release_date)) }}</span>
                                             <h6 class="card-text"><i class="fa-solid fa-thumbs-up" style="color:blue"></i>
                                                 {{ number_format($data->vote_average * 10, 0) }} %</h6>
-                                            <a href="/movie/{{ $data->id }}" class="btn btn-primary"><i
+                                            <a href="/movies/{{ $data->id }}" class="btn btn-primary"><i
                                                     class="fa-solid fa-play"></i> Detail</a>
                                         </div>
                                     </div>
@@ -113,7 +113,7 @@
                                                         <span>${ movieYear }</span>
                                                         <h6 class="card-text"><i class="fa-solid fa-thumbs-up" style="color:blue"></i>
                                                             ${ (item.vote_average * 10).toFixed(0) } %</h6>
-                                                        <a href="/movie/${item.id}" class="btn btn-primary"><i
+                                                        <a href="/movies/${item.id}" class="btn btn-primary"><i
                                                                 class="fa-solid fa-play"></i> Detail</a>
                                                     </div>
                                                 </div>

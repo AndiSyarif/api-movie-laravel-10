@@ -77,7 +77,31 @@ class MovieController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $baseurl = env('MOVIE_DB_BASE_URL');
+        $baseimageurl = env('MOVIE_DB_IMAGE_BASE_URL');
+        $api_key = env('MOVIE_DB_API_KEY');
+
+        //hit top deatil movie
+        $movie = Http::get("{$baseurl}/movie/{$id}", [
+            'api_key' => $api_key,
+            'append_ts_response' => 'videos'
+
+        ]);
+
+        $movieData = null;
+
+        if ($movie->successful()) {
+            $movieData = $movie->object();
+        }
+
+
+        return view('movies.movie-detail', [
+            'baseurl' => $baseurl,
+            'baseimageurl' => $baseimageurl,
+            'api_key' => $api_key,
+            'movieData' => $movieData
+
+        ]);
     }
 
     /**

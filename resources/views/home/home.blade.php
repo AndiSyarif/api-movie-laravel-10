@@ -28,7 +28,7 @@
                                             style="z-index: 1;color: #fff;position: absolute;">
                                             <h5><b>{{ $data->title }}</b></h5>
                                             <p>{{ $data->overview }}</p>
-                                            <a href="/movie/{{ $data->id }}" class="btn btn-info btn-sm rounded"><i
+                                            <a href="/movies/{{ $data->id }}" class="btn btn-info rounded"><i
                                                     class="fa-solid fa-play"></i> Detail</a>
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@
                                                 <h6 class="card-text"><i class="fa-solid fa-thumbs-up"
                                                         style="color:blue"></i>
                                                     {{ number_format($data->vote_average * 10, 0) }} %</h6>
-                                                <a href="/movie/{{ $data->id }}" class="btn btn-primary"><i
+                                                <a href="/movies/{{ $data->id }}" class="btn btn-primary"><i
                                                         class="fa-solid fa-play"></i> Detail</a>
                                             </div>
                                         </div>
@@ -104,7 +104,7 @@
                                                 <h6 class="card-text"><i class="fa-solid fa-thumbs-up"
                                                         style="color:blue"></i>
                                                     {{ number_format($data->vote_average * 10, 0) }} %</h6>
-                                                <a href="/tv/{{ $data->id }}" class="btn btn-primary"><i
+                                                <a href="/tv-shows/{{ $data->id }}" class="btn btn-primary"><i
                                                         class="fa-solid fa-play"></i> Detail</a>
                                             </div>
                                         </div>

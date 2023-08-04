@@ -38,7 +38,7 @@
                                             <span>{{ date('Y', strtotime($data->first_air_date)) }}</span>
                                             <h6 class="card-text"><i class="fa-solid fa-thumbs-up" style="color:blue"></i>
                                                 {{ number_format($data->vote_average * 10, 0) }} %</h6>
-                                            <a href="/tv/{{ $data->id }}" class="btn btn-primary"><i
+                                            <a href="/tv-shows/{{ $data->id }}" class="btn btn-primary"><i
                                                     class="fa-solid fa-play"></i> Detail</a>
                                         </div>
                                     </div>
@@ -114,7 +114,7 @@
                                                         <span>${ tvYear }</span>
                                                         <h6 class="card-text"><i class="fa-solid fa-thumbs-up" style="color:blue"></i>
                                                             ${ (item.vote_average * 10).toFixed(0) } %</h6>
-                                                        <a href="/tv/${item.id}" class="btn btn-primary"><i
+                                                        <a href="/tv-shows/${item.id}" class="btn btn-primary"><i
                                                                 class="fa-solid fa-play"></i> Detail</a>
                                                     </div>
                                                 </div>
