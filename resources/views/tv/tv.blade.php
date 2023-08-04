@@ -29,13 +29,15 @@
                                     <div class="card mb-4">
                                         <img class="card-img-top rounded"
                                             style="width:250px;height:300px;object-fit: cover;"
-                                            src="{{ $baseimageurl }}/w500{{ $data->poster_path }}" alt="Card image cap">
+                                            src="@if ($data->poster_path) {{ $baseimageurl }}/w500{{ $data->poster_path }}
+                                            @else https://via.placeholder.com/250x300 @endif"
+                                            alt="image">
                                         <div class="card-body">
                                             <h6 class="card-title"><b>{{ Str::limit($data->name, 23) }}</b></h6>
                                             <br>
                                             <span>{{ date('Y', strtotime($data->first_air_date)) }}</span>
                                             <h6 class="card-text"><i class="fa-solid fa-thumbs-up" style="color:blue"></i>
-                                                {{ $data->vote_average * 10 }} %</h6>
+                                                {{ number_format($data->vote_average * 10, 0) }} %</h6>
                                             <a href="/tv/{{ $data->id }}" class="btn btn-primary"><i
                                                     class="fa-solid fa-play"></i> Detail</a>
                                         </div>
@@ -99,18 +101,19 @@
                             let tvTitle = item.name.length > 25 ? item.name.slice(0, 23) +
                                 "..." : item
                                 .name;
-                            //let tvImage = `${baseImageurl}/w500${item.poster_path}`;
+                            let tvImage = item.poster_path ? `${baseImageurl}/w500${item.poster_path}` :
+                                'https://via.placeholder.com/250x300';
                             let tvYear = new Date(item.first_air_date).getFullYear();
                             htmlData.push(`<div class="col-md-2.5 mx-auto">
                                                 <div class="card mb-4">
                                                     <img class="card-img-top rounded"
                                                         style="width:250px;height:300px;object-fit: cover;"
-                                                        src="${baseImageurl}/w500${item.poster_path}" alt="Card image cap">
+                                                        src="${tvImage}" alt="image">
                                                     <div class="card-body">
                                                         <h6 class="card-title"><b>${tvTitle}</b></h6><br>
                                                         <span>${ tvYear }</span>
                                                         <h6 class="card-text"><i class="fa-solid fa-thumbs-up" style="color:blue"></i>
-                                                            ${ item.vote_average * 10 } %</h6>
+                                                            ${ (item.vote_average * 10).toFixed(0) } %</h6>
                                                         <a href="/tv/${item.id}" class="btn btn-primary"><i
                                                                 class="fa-solid fa-play"></i> Detail</a>
                                                     </div>

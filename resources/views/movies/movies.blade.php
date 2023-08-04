@@ -29,12 +29,15 @@
                                     <div class="card mb-4">
                                         <img class="card-img-top rounded"
                                             style="width:250px;height:300px;object-fit: cover;"
-                                            src="{{ $baseimageurl }}/w500{{ $data->poster_path }}" alt="Card image cap">
+                                            src="@if ($data->poster_path) {{ $baseimageurl }}/w500{{ $data->poster_path }}
+                                            @else
+                                            https://via.placeholder.com/250x300 @endif "
+                                            alt="image">
                                         <div class="card-body">
                                             <h6 class="card-title"><b>{{ Str::limit($data->title, 23) }}</b></h6><br>
                                             <span>{{ date('Y', strtotime($data->release_date)) }}</span>
                                             <h6 class="card-text"><i class="fa-solid fa-thumbs-up" style="color:blue"></i>
-                                                {{ $data->vote_average * 10 }} %</h6>
+                                                {{ number_format($data->vote_average * 10, 0) }} %</h6>
                                             <a href="/movie/{{ $data->id }}" class="btn btn-primary"><i
                                                     class="fa-solid fa-play"></i> Detail</a>
                                         </div>
@@ -97,18 +100,19 @@
                         response.results.forEach(item => {
                             let movieTitle = item.title.length > 25 ? item.title.slice(0, 23) + "..." : item
                                 .title;
-                            //let movieImage = `${baseImageurl}/original${item.poster_path}`;
+                            let movieImage = item.poster_path ? `${baseImageurl}/original${item.poster_path}` :
+                                'https://via.placeholder.com/250x300';
                             let movieYear = new Date(item.release_date).getFullYear();
                             htmlData.push(`<div class="col-md-2.5 mx-auto">
                                                 <div class="card mb-4">
                                                     <img class="card-img-top rounded"
                                                         style="width:250px;height:300px;object-fit: cover;"
-                                                        src="${baseImageurl}/w500${item.poster_path}" alt="Card image cap">
+                                                        src="${movieImage}" alt="image">
                                                     <div class="card-body">
                                                         <h6 class="card-title"><b>${movieTitle}</b></h6><br>
                                                         <span>${ movieYear }</span>
                                                         <h6 class="card-text"><i class="fa-solid fa-thumbs-up" style="color:blue"></i>
-                                                            ${ item.vote_average * 10 } %</h6>
+                                                            ${ (item.vote_average * 10).toFixed(0) } %</h6>
                                                         <a href="/movie/${item.id}" class="btn btn-primary"><i
                                                                 class="fa-solid fa-play"></i> Detail</a>
                                                     </div>

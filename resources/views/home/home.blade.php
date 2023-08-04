@@ -71,7 +71,7 @@
                                                 <span>{{ date('Y', strtotime($data->release_date)) }}</span>
                                                 <h6 class="card-text"><i class="fa-solid fa-thumbs-up"
                                                         style="color:blue"></i>
-                                                    {{ $data->vote_average * 10 }} %</h6>
+                                                    {{ number_format($data->vote_average * 10, 0) }} %</h6>
                                                 <a href="/movie/{{ $data->id }}" class="btn btn-primary"><i
                                                         class="fa-solid fa-play"></i> Detail</a>
                                             </div>
@@ -103,7 +103,7 @@
                                                 <span>{{ date('Y', strtotime($data->first_air_date)) }}</span>
                                                 <h6 class="card-text"><i class="fa-solid fa-thumbs-up"
                                                         style="color:blue"></i>
-                                                    {{ $data->vote_average * 10 }} %</h6>
+                                                    {{ number_format($data->vote_average * 10, 0) }} %</h6>
                                                 <a href="/tv/{{ $data->id }}" class="btn btn-primary"><i
                                                         class="fa-solid fa-play"></i> Detail</a>
                                             </div>
