@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TvController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,6 @@ Route::resource('/movies', MovieController::class);
 
 //route tv
 Route::resource('/tv-shows', TvController::class);
+
+//route search
+Route::resource('/search', SearchController::class);
