@@ -31,7 +31,7 @@
                                             style="width:250px;height:300px;object-fit: cover;"
                                             src="{{ $baseimageurl }}/w500{{ $data->poster_path }}" alt="Card image cap">
                                         <div class="card-body">
-                                            <h6 class="card-title"><b>{{ Str::limit($data->name, 25) }}</b></h6>
+                                            <h6 class="card-title"><b>{{ Str::limit($data->name, 23) }}</b></h6>
                                             <br>
                                             <span>{{ date('Y', strtotime($data->first_air_date)) }}</span>
                                             <h6 class="card-text"><i class="fa-solid fa-thumbs-up" style="color:blue"></i>
@@ -96,7 +96,7 @@
                         console.log(response.results);
                         var htmlData = [];
                         response.results.forEach(item => {
-                            let tvTitle = item.name.length > 25 ? item.name.slice(0, 25) +
+                            let tvTitle = item.name.length > 25 ? item.name.slice(0, 23) +
                                 "..." : item
                                 .name;
                             //let tvImage = `${baseImageurl}/w500${item.poster_path}`;

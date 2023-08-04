@@ -31,7 +31,7 @@
                                             style="width:250px;height:300px;object-fit: cover;"
                                             src="{{ $baseimageurl }}/w500{{ $data->poster_path }}" alt="Card image cap">
                                         <div class="card-body">
-                                            <h6 class="card-title"><b>{{ Str::limit($data->title, 25) }}</b></h6><br>
+                                            <h6 class="card-title"><b>{{ Str::limit($data->title, 23) }}</b></h6><br>
                                             <span>{{ date('Y', strtotime($data->release_date)) }}</span>
                                             <h6 class="card-text"><i class="fa-solid fa-thumbs-up" style="color:blue"></i>
                                                 {{ $data->vote_average * 10 }} %</h6>
@@ -95,7 +95,7 @@
                         console.log(response.results);
                         var htmlData = [];
                         response.results.forEach(item => {
-                            let movieTitle = item.title.length > 25 ? item.title.slice(0, 25) + "..." : item
+                            let movieTitle = item.title.length > 25 ? item.title.slice(0, 23) + "..." : item
                                 .title;
                             //let movieImage = `${baseImageurl}/original${item.poster_path}`;
                             let movieYear = new Date(item.release_date).getFullYear();

@@ -15,7 +15,7 @@ class SearchController extends Controller
         $baseimageurl = env('MOVIE_DB_IMAGE_BASE_URL');
         $api_key = env('MOVIE_DB_API_KEY');
 
-        return view('search.serach', [
+        return view('search.search', [
             'baseurl' => $baseurl,
             'baseimageurl' => $baseimageurl,
             'api_key' => $api_key,
