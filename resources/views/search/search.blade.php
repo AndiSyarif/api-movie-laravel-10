@@ -6,6 +6,12 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid pt-3">
+                <div class="row justify-content-center mt-3 mb-3">
+                    <div class="col-6">
+                        <input class="form-control form-control-navbar" type="search" id="searchInput"
+                            placeholder="Search here..." aria-label="Search">
+                    </div>
+                </div>
                 <div class="card rounded">
                     <div class="row" id="dataWrapper">
                     </div>

@@ -46,11 +46,12 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Navbar Search -->
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                    <a href="/search" class="nav-link">
                         <i class="fas fa-search"></i>
                     </a>
-                    <div class="navbar-search-block">
-                        <form class="form-inline">
+                    {{-- <div class="navbar-search-block">
+                        <form class="form-inline" action="/search" method="GET">
+                            <button type="button"></button>
                             <div class="input-group input-group-sm">
                                 <input class="form-control form-control-navbar" type="search" id="searchInput"
                                     placeholder="Search" aria-label="Search">
@@ -61,7 +62,7 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
+                    </div> --}}
                 </li>
 
                 <li class="nav-item">
@@ -213,33 +214,18 @@
 
     <script>
         $(function() {
-            /* jQueryKnob */
-
             $('.knob').knob({
-                /*change : function (value) {
-                 //console.log("change : " + value);
-                 },
-                 release : function (value) {
-                 console.log("release : " + value);
-                 },
-                 cancel : function () {
-                 console.log("cancel : " + this.value);
-                 },*/
+
                 draw: function() {
 
                     // "tron" case
                     if (this.$.data('skin') == 'tron') {
 
-                        var a = this.angle(this.cv) // Angle
-                            ,
-                            sa = this.startAngle // Previous start angle
-                            ,
-                            sat = this.startAngle // Start angle
-                            ,
-                            ea // Previous end angle
-                            ,
-                            eat = sat + a // End angle
-                            ,
+                        var a = this.angle(this.cv),
+                            sa = this.startAngle,
+                            sat = this.startAngle,
+                            ea,
+                            eat = sat + a,
                             r = true
 
                         this.g.lineWidth = this.lineWidth
