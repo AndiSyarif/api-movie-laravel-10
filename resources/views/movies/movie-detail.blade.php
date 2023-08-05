@@ -45,8 +45,15 @@
                                     }
                                 }
                                 
-                                $circle = ((2 * 22) / 7) * 32;
-                                $progressRating = $circle - ($rating / 100) * $circle;
+                                $trailerID = '';
+                                if (isset($movieData->videos->results)) {
+                                    foreach ($movieData->videos->results as $item) {
+                                        if (strtolower($item->type) == 'trailer') {
+                                            $trailerID = $item->key;
+                                            break;
+                                        }
+                                    }
+                                }
                                 
                             @endphp
 
@@ -58,12 +65,42 @@
                                     <input type="text" class="knob" value="{{ $rating }}" data-width="90"
                                         data-height="90" data-fgColor="#39CCCC" readonly>
                                     <button class="ml-3 mr-3 mt-3 btn btn-outline-light"
-                                        style="height: 60px;width:100px"><b>{{ $originalDate }}</b></button>
+                                        style="height: 60px;width:100px"><b><i class="fa-solid fa-calendar-days"></i>
+                                            {{ $originalDate }}</b></button>
                                     <button class="ml-3 mr-3 mt-3 btn btn-outline-light"
-                                        style="height: 60px;width:100px"><b>{{ $duration }}</b></button>
+                                        style="height: 60px;width:100px"><b><i class="fa-solid fa-clock"></i>
+                                            {{ $duration }}</b></button>
                                 </div>
-                                <button type="submit" class="btn btn-warning rounded mt-3 ml-2"
-                                    style="height: 50px;width:100px"><i class="fa-solid fa-play"></i> Play</button>
+                                @if ($trailerID)
+                                    <button type="button" data-toggle="modal" data-target="#exampleModalCenter"
+                                        class="btn btn-warning rounded mt-3 ml-2" style="height: 50px;width:150px">
+                                        <i class="fa-solid fa-play"></i> Play Trailer
+                                    </button>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Trailer {{ $title }}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe id="trailerIframe" class="embed-responsive-item"
+                                        src="https://www.youtube.com/embed/{{ $trailerID }}"></iframe>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
@@ -72,6 +109,17 @@
         </div>
     </div>
     <!-- /.row -->
-    </div><!-- /.container-fluid -->
+    <!-- /.container-fluid -->
+
+    <script>
+        $('#exampleModalCenter').on('hidden.bs.modal', function(e) {
+            var iframe = document.getElementById('trailerIframe');
+            var iframeSrc = iframe.src;
+            iframe.src = '';
+            setTimeout(function() {
+                iframe.src = iframeSrc;
+            }, 500);
+        });
+    </script>
 
 @endsection

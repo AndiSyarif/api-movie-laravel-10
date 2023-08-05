@@ -84,7 +84,7 @@ class MovieController extends Controller
         //hit top deatil movie
         $movie = Http::get("{$baseurl}/movie/{$id}", [
             'api_key' => $api_key,
-            'append_ts_response' => 'videos'
+            'append_to_response' => 'videos'
 
         ]);
 

@@ -86,7 +86,7 @@ class TvController extends Controller
         //hit top deatil movie
         $tv = Http::get("{$baseurl}/tv/{$id}", [
             'api_key' => $api_key,
-            'append_ts_response' => 'videos'
+            'append_to_response' => 'videos'
 
         ]);
 
@@ -97,7 +97,7 @@ class TvController extends Controller
         }
 
 
-        return view('movies.movie-detail', [
+        return view('tv.tv-detail', [
             'baseurl' => $baseurl,
             'baseimageurl' => $baseimageurl,
             'api_key' => $api_key,
