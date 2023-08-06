@@ -37,6 +37,9 @@ run php artisan serve <br>
 open link at your browser
 http://127.0.0.1:8000
 
+## Demo Link
+https://api-movie.andisdev.tech/
+
 ## Screenshoot
 ![logo](https://github.com/AndiSyarif/api-movie-laravel-10/blob/main/public/assets/img/ss1.png)
 ![logo](https://github.com/AndiSyarif/api-movie-laravel-10/blob/main/public/assets/img/ss2.png)
